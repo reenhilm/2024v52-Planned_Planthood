@@ -129,6 +129,29 @@ main {
   --fw-x-bold: var(--fw-900);
 }
 
+nav {
+  height: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  h1 {
+      margin: auto auto auto 1rem;
+  }
+
+  a {
+    margin: 2.5rem;
+  }
+
+  path {
+    stroke: var(--clr-green-400);
+  }
+}
+
+svg, .logo {
+  width: 2.625rem;
+}
+
 /* Utilities */
 .visually-hidden {
   clip: rect(0 0 0 0);
@@ -140,12 +163,17 @@ main {
   width: 1px;
 }
 
+.greentext {
+  color: var(--clr-accent);
+}
+
 /* Composition */
 .flow > * + * {
   margin-block-start: var(--flow-space, 1em);
 }
 
 /* Global/base */
+h1,
 h2,
 h3 {
   font-weight: var(--fw-bold);
@@ -198,13 +226,27 @@ footer
   min-height: 100px;
   background-color: var(--clr-green-400);
   display: grid;
-  grid-column-start: 1;
-  grid-column-end: -1;
+  grid-column: 1 / -1;
   grid-template-columns: subgrid;
+
+  h2 {
+    font-size: var(--fs-400);
+  }
+
+  * + * {
+    color: var(--clr-accent-light-1);
+  }
+}
+
+header {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  background-color: var(--clr-primary-light-1);
 }
 
 .imgWrapper {
-  background-color: var(--clr-neutral-100);
+  background-color: var(--clr-primary-light-1);
   padding: 20px;
   box-shadow: var(--border-shadow);
 }
@@ -213,11 +255,6 @@ footer
   /* mobile */
   .container {
     grid-template-columns: 20px repeat(2, 1fr) 20px;
-
-    header 
-    {
-        grid-column: 2 / span 2;
-    }
 
     .imgWrapper {
       grid-column: 2 / span 2;
@@ -247,10 +284,6 @@ footer
   .container {
     grid-template-columns: 20px repeat(2, 1fr) 20px;
 
-    header {
-      grid-column: 2 / span 2;
-    }
-
     .imgWrapper {
       grid-column: 2 / span 2;
       display: grid;
@@ -279,12 +312,8 @@ footer
   .container {
     grid-template-columns: auto repeat(12, 75px) auto;
 
-    header {
-      grid-column: 2 / span 11;
-    }
-
     .imgWrapper {
-      grid-column: 2 / span 11;
+      grid-column: 2 / span 12;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
   
@@ -296,7 +325,7 @@ footer
     h2,
     p,
     article {
-      grid-column: 2 / span 11;
+      grid-column: 2 / span 12;
     }
 
     .narrow {
@@ -308,16 +337,12 @@ footer
       text-align: end;
     }
 
-    footer > span {
-      grid-column: 2 / span 5;        
+    .footwrapper {
+      grid-column: 2 / -2;        
     }
 
-    footer>address {
-      grid-column-start: 9;
-    }
-
-    footer>a {
-      grid-column-start: 10;
+    nav {
+      grid-column: 2 / -2;
     }
   }
 }
