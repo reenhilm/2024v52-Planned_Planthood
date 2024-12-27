@@ -127,8 +127,6 @@ main {
   --fw-semi-bold: var(--fw-600);
   --fw-bold: var(--fw-700);
   --fw-x-bold: var(--fw-900);
-
-  --flow-space: 1rem;
 }
 
 nav {
@@ -139,11 +137,14 @@ nav {
 
   h1 {
       margin: auto auto auto 1rem;
+      text-transform: uppercase;
   }
 
   a {
     margin-inline: 0.25rem;
     padding: 0.8rem 1.5rem;
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
   }
 
   path {
@@ -259,7 +260,8 @@ footer
   grid-template-columns: subgrid;
 
   h2 {
-    font-size: var(--fs-400);
+    font-size: var(--fs-500);
+    text-transform: uppercase;
   }
 
   * + * {
