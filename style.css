@@ -127,6 +127,8 @@ main {
   --fw-semi-bold: var(--fw-600);
   --fw-bold: var(--fw-700);
   --fw-x-bold: var(--fw-900);
+
+  --flow-space: 1rem;
 }
 
 nav {
@@ -154,14 +156,19 @@ nav {
   padding: 1rem;
 }
 
-nav a, footer a {
+nav a {
   &:hover,
   &:focus-visible {
     text-decoration: none;
   }
 }
 
-svg, .logo {
+.logo {
+  display: flex;
+  gap: 1rem;
+}
+
+svg, .logo-img {
   width: 2.625rem;
 }
 
@@ -178,6 +185,10 @@ svg, .logo {
 
 .greentext {
   color: var(--clr-accent);
+}
+
+.semi-bold {
+  font-weight: var(--fw-semi-bold);
 }
 
 /* Composition */
@@ -215,12 +226,17 @@ a {
   text-decoration: none;
   color: var(--clr-accent);
 
+  &:visited {
+    color: var(--clr-accent);
+  }
+  
   &:hover,
   &:focus-visible {
     color: var(--clr-primary-light-1);
     background-color: var(--clr-accent);
     text-decoration: underline;
   }
+
 }
 
 body {
@@ -236,8 +252,7 @@ body {
 
 footer 
 {
-  /* remove min-height */
-  min-height: 100px;
+  padding-block: 3rem;
   background-color: var(--clr-green-400);
   display: grid;
   grid-column: 1 / -1;
@@ -249,6 +264,14 @@ footer
 
   * + * {
     color: var(--clr-accent-light-1);
+  }
+
+  a {
+    /* color: var(--clr-accent-light-1); */
+
+    &:visited {
+        color: var(--clr-accent-light-1);
+    }
   }
 }
 
@@ -295,7 +318,8 @@ header {
       grid-column: 2 / -2;
     }
 
-    header>nav>a:not(.toggle) {
+    header>nav>a:not(.toggle),
+    .footnav {
       display: none;
     }
   }
@@ -332,10 +356,27 @@ header {
       grid-column: 2 / -2;
     }
 
-    header>nav>a:not(.toggle) {
+    header>nav>a:not(.toggle),
+    .footnav {
       display: none;
     }
   }
+}
+
+.footwrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+address img {
+  width: 1em;
+  margin-block: auto;
+}
+
+address {
+  display: flex;
+  gap: 0.5rem;
 }
 
 @media (width >= 950px) {
@@ -368,7 +409,14 @@ header {
     }
 
     .footwrapper {
-      grid-column: 2 / -2;        
+      grid-column: 2 / 7;
+    }
+
+    .footnav {
+      grid-column: 11 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     nav {
