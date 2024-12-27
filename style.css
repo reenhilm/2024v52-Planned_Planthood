@@ -17,7 +17,7 @@
 
 /* dark mode user-agent-styles */
 html {
-  color-scheme: dark light;
+  /* color-scheme: dark light; */
 }
 
 /* min body height */
@@ -152,6 +152,15 @@ h3 {
   line-height: 1;
 }
 
+.center {
+  text-align: center;
+}
+
+.max40 {
+  max-width: 40ch;
+  justify-self: center;
+}
+
 h2 {
   font-size: var(--fs-700);
 }
@@ -176,4 +185,139 @@ body {
   font-family: var(--font-base);
   background-color: var(--clr-accent-light-1);
   color: var(--clr-primary-dark);
+}
+
+.container
+{
+  display: grid;
+}
+
+footer 
+{
+  /* remove min-height */
+  min-height: 100px;
+  background-color: var(--clr-green-400);
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  grid-template-columns: subgrid;
+}
+
+.imgWrapper {
+  background-color: var(--clr-neutral-100);
+  padding: 20px;
+  box-shadow: var(--border-shadow);
+}
+
+@media (width < 600px) {
+  /* mobile */
+  .container {
+    grid-template-columns: 20px repeat(2, 1fr) 20px;
+
+    header 
+    {
+        grid-column: 2 / span 2;
+    }
+
+    .imgWrapper {
+      grid-column: 2 / span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      &>img {
+        width: 100%;
+      }
+    }
+
+    h2,
+    p, article
+    {
+      grid-column: 2 / span 2;
+    }
+
+    a {
+      grid-column: span 1 / 4;
+      text-align: end;
+    }
+  }
+}
+
+@media (width >= 600px) and (width < 900px) {
+  /* tablet */
+  .container {
+    grid-template-columns: 20px repeat(2, 1fr) 20px;
+
+    header {
+      grid-column: 2 / span 2;
+    }
+
+    .imgWrapper {
+      grid-column: 2 / span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+
+      &>img {
+        width: 100%;
+      }
+    }
+
+    h2,
+    p,
+    article {
+      grid-column: 2 / span 2;
+    }
+
+    a {
+      grid-column: span 1 / 4;
+      text-align: end;
+    }
+  }
+}
+
+@media (width >= 900px) {
+  .container {
+    grid-template-columns: auto repeat(12, 75px) auto;
+
+    header {
+      grid-column: 2 / span 11;
+    }
+
+    .imgWrapper {
+      grid-column: 2 / span 11;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+  
+      &>img {
+        width: 100%;
+      }
+    }
+
+    h2,
+    p,
+    article {
+      grid-column: 2 / span 11;
+    }
+
+    .narrow {
+      grid-column: 5 / span 6;
+    }
+
+    a {
+      grid-column: 9 / span 2;
+      text-align: end;
+    }
+
+    footer > span {
+      grid-column: 2 / span 5;        
+    }
+
+    footer>address {
+      grid-column-start: 9;
+    }
+
+    footer>a {
+      grid-column-start: 10;
+    }
+  }
 }
