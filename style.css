@@ -140,11 +140,24 @@ nav {
   }
 
   a {
-    margin: 2.5rem;
+    margin-inline: 0.25rem;
+    padding: 0.8rem 1.5rem;
   }
 
   path {
     stroke: var(--clr-green-400);
+  }
+}
+
+.toggle {
+  margin: 0.8rem;
+  padding: 1rem;
+}
+
+nav a, footer a {
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
   }
 }
 
@@ -205,6 +218,7 @@ a {
   &:hover,
   &:focus-visible {
     color: var(--clr-primary-light-1);
+    background-color: var(--clr-accent);
     text-decoration: underline;
   }
 }
@@ -276,10 +290,18 @@ header {
       grid-column: span 1 / 4;
       text-align: end;
     }
+
+    nav {
+      grid-column: 2 / -2;
+    }
+
+    header>nav>a:not(.toggle) {
+      display: none;
+    }
   }
 }
 
-@media (width >= 600px) and (width < 900px) {
+@media (width >= 600px) and (width < 950px) {
   /* tablet */
   .container {
     grid-template-columns: 20px repeat(2, 1fr) 20px;
@@ -305,10 +327,18 @@ header {
       grid-column: span 1 / 4;
       text-align: end;
     }
+
+    nav {
+      grid-column: 2 / -2;
+    }
+
+    header>nav>a:not(.toggle) {
+      display: none;
+    }
   }
 }
 
-@media (width >= 900px) {
+@media (width >= 950px) {
   .container {
     grid-template-columns: auto repeat(12, 75px) auto;
 
@@ -343,6 +373,10 @@ header {
 
     nav {
       grid-column: 2 / -2;
+    }
+
+    .toggle {
+      display: none;
     }
   }
 }
